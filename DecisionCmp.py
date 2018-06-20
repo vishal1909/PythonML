@@ -16,8 +16,6 @@ train_target=np.delete(load.target,1)
 clf=tree.DecisionTreeClassifier()
 algo=clf.fit(train_data,train_target)
 out=algo.predict([load.data[1]])
-#print(out)
-
 print(out)
 
 """
@@ -59,15 +57,18 @@ print(test_target)
 y=accuracy_score(test_target,out)
 print("Accuracy is",y)
 
-
+"""
 import matplotlib.pyplot as mp
 q=["iris","diabetes"]
 e=[x,y]
 mp.bar(q,e)
 mp.show()
 
-tree.export_graphviz(load.data, out_file="tree.dot", max_depth=4, filled=True, )
-tree.export_graphviz(iris.data, out_file="treeiris.dot", max_depth=4, filled=True, )
+"""
+
+tree.export_graphviz(clf, out_file="treeiris.dot", max_depth=4,feature_names=iris.feature_names, class_names=iris.target_names, filled=True , rounded=True )
+
+
 
 
 
